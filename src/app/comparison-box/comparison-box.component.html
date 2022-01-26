@@ -1,15 +1,20 @@
-<p>comparison-box works!</p>
-<div class="d-flex-inline justify-content-center">
-    <div class="bg-">
-        <img [src]="PokemonBox1Src" class="rounded">
-        <button>
-            <img [src]="clearBoxSrc" class="rounded-circle">
+<div class="d-flex justify-content-center compare-container">
+    <div class="d-flex flex-column align-items-center">
+        <img [src]="PokemonBox1Src" class="pokemon-box">
+        <button [title]="clearBoxHoverText" class="clear-button">
+            <img [src]="clearButtonSrc" class="clear-button-image">
         </button>
     </div>
-    <div class="bg-">
-        <img [src]="PokemonBox2Src" class="rounded">
-        <button>
-            <img [src]="clearBoxSrc" class="rounded-circle">
+    <div class="d-flex align-items-center">
+        <img [src]="versusSrc" class="versus-image">
+    </div>
+    <div class="d-flex flex-column align-items-center">
+        <img [src]="PokemonBox2Src" class="pokemon-box">
+        <button  [title]="clearBoxHoverText" class="clear-button">
+            <img [src]="clearButtonSrc" class="clear-button-image">
         </button>
+    </div>
+    <div class="d-flex align-items-center">
+        <button class="btn btn-danger">Comparar</button>
     </div>
 </div>

@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComparisonBoxComponent implements OnInit {
 
-  PokemonBox1Src: string = '';
-  PokemonBox2Src: string = '';
-  clearBoxSrc: string = '';
+  readonly emptyPokemonBoxSrc: string = 'assets/images/empty-pokemon-box.png';
+
+  PokemonBox1Src: string = this.emptyPokemonBoxSrc;
+  PokemonBox2Src: string = this.emptyPokemonBoxSrc;
+  clearBoxHoverText: string = 'Clique para remover o Pokemon';
+  clearButtonSrc: string = 'assets/images/icon-close.png';
+  versusSrc: string = 'assets/images/versus-icon.png';
 
   constructor() { }
 

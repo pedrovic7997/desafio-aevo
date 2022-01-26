@@ -1,36 +1,42 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">{{ name }}</a>
-    <form class="d-flex">
+    <a class="navbar-brand" routerLink="/">
+      <img [src]="logoSrc" class="logo">
+    </a>
+    <!-- <form class="d-flex">
       <input class="form-control me-2" 
       type="search" placeholder="Search" aria-label="Search"
       [(ngModel)]="pokemonSearch">
       <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+    </form> -->
   </div>
 </nav>
 
-<div *ngIf="showComparison"
- class="container d-inline-flex justify-content-around">
-  <section>
-    {{ text }}
-  </section>
-  <div>
-    <comparison-box></comparison-box>
+<div class="d-flex justify-content-center">
+  <div *ngIf="showComparison"
+    class="container d-flex justify-content-around comparison-info">
+    <div class="text-container">
+      <section class="text-content">
+        {{ text }}
+      </section>
+    </div>
+    <div>
+      <comparison-box></comparison-box>
+    </div>
   </div>
 </div>
 
 <div class="container">
   <router-outlet></router-outlet>
-
-  <div class="d-inline-flex justify-content-center">
-    <button (click)="onPreviousClick()">
-      <img [src]="previousArrowSrc">
+  
+  <div class="d-flex justify-content-center">
+    <button (click)="onPreviousClick()" class="previous-next-button">
+      <img [src]="previousArrowSrc" class="previous-next-image">
     </button>
     <input type="text" [placeholder]="listLimitText" [(ngModel)]="listLimit"
-    (enter)="changeListLimit()">
-    <button (click)="onNextClick()">
-      <img [src]="nextArrowSrc">
+    (enter)="changeListLimit()" class="input-field">
+    <button (click)="onNextClick()" class="previous-next-button">
+      <img [src]="nextArrowSrc" class="previous-next-image">
     </button>
   </div>
 </div>
