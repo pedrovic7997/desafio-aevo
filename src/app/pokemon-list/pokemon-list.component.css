@@ -1,0 +1,25 @@
+.input-field {
+    margin: 10px;
+    width: 150px;
+}
+
+.previous-next-image {
+    height: 24px;
+    width: 24px;
+}
+
+.previous-next-button {
+    border: none;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.list-container {
+    /* background-color: #7aaef371; */
+    background-color: #e0e1e271;
+    border-radius: 9px;
+}
+
+.list-item {
+    background-color: #acadad71;
+    border-radius: 18px;
+}

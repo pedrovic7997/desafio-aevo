@@ -26,20 +26,6 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container">  
   <router-outlet></router-outlet>
-  
-  <div class="d-flex justify-content-center">
-    <button (click)="onPreviousClick()" class="previous-next-button">
-      <img [src]="previousArrowSrc" class="previous-next-image">
-    </button>
-    <section class="align-self-center">
-      Mostrando: 
-    </section>
-    <input type="text" [placeholder]="listLimitText" [(ngModel)]="listLimit"
-    (enter)="changeListLimit()" class="input-field form-control">
-    <button (click)="onNextClick()" class="previous-next-button">
-      <img [src]="nextArrowSrc" class="previous-next-image">
-    </button>
-  </div>
 </div>
