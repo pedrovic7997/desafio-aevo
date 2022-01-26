@@ -15,6 +15,11 @@
         </button>
     </div>
     <div class="d-flex align-items-center">
-        <button class="btn btn-danger">Comparar</button>
+        <button 
+        class="btn btn-danger compare-button"
+        [ngClass]="{
+            disabled: !isPokemon1Set || !isPokemon2Set
+        }" 
+        >Comparar</button>
     </div>
 </div>

@@ -15,7 +15,6 @@ export class AppComponent {
   listLimitText: string = `Mostrando ${this.listLimit} itens`
   previousArrowSrc: string = 'assets/images/icons-prev.png';
   nextArrowSrc: string = 'assets/images/icons-next.png';
-  // pokemonSearch: string = '';
 
   onPreviousClick(){
 

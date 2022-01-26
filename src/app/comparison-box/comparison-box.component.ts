@@ -15,6 +15,9 @@ export class ComparisonBoxComponent implements OnInit {
   clearButtonSrc: string = 'assets/images/icon-close.png';
   versusSrc: string = 'assets/images/versus-icon.png';
 
+  isPokemon1Set: boolean = false;
+  isPokemon2Set: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

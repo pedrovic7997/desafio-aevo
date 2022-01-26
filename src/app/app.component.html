@@ -33,8 +33,11 @@
     <button (click)="onPreviousClick()" class="previous-next-button">
       <img [src]="previousArrowSrc" class="previous-next-image">
     </button>
+    <section class="align-self-center">
+      Mostrando: 
+    </section>
     <input type="text" [placeholder]="listLimitText" [(ngModel)]="listLimit"
-    (enter)="changeListLimit()" class="input-field">
+    (enter)="changeListLimit()" class="input-field form-control">
     <button (click)="onNextClick()" class="previous-next-button">
       <img [src]="nextArrowSrc" class="previous-next-image">
     </button>
