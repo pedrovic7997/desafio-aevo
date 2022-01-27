@@ -14,12 +14,8 @@
 }
 
 .list-container {
-    /* background-color: #7aaef371; */
     background-color: #e0e1e271;
     border-radius: 9px;
-}
-
-.list-item {
-    background-color: #acadad71;
-    border-radius: 18px;
+    padding: 5px;
+    overflow: scroll;
 }
