@@ -6,16 +6,23 @@
         <section class="align-self-center">
             Mostrando: 
         </section>
-        <input type="text" [placeholder]="listLimitText" [(ngModel)]="listLimit"
+        <input type="text" [(ngModel)]="listLimit"
         (enter)="changeListLimit()" class="input-field form-control">
         <button (click)="onNextClick()" class="previous-next-button">
             <img [src]="nextArrowSrc" class="previous-next-image">
         </button>
     </div>
 
+    <!-- TODO: FAZER O CAMPO DE BUSCA -->
+
     <div class="container list-container">
-        <!-- <div *ngFor="let item of collection" >
-        </div> -->
+        <div *ngFor="let pokemon of pokemonArray" class="d-flex align-items-center list-item">
+            <!-- <img [src]="getPokemonImage(pokemon.id) | async"> -->
+            <!-- TODO: MONTAR UM NOVO COMPONENTE -->
+            <div>
+                {{ pokemon.name }}
+            </div>
+        </div>
     </div>
 </div>
     

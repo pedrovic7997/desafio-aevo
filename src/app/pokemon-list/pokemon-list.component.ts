@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PokeapiService } from '../pokeapi.service';
+
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
@@ -7,18 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonListComponent implements OnInit {
   
-  readonly pokemonItemImgSrc: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
-  readonly pokemonListSrc: string = 'https://pokeapi.co/api/v2/pokemon/';
-
+  // Valor inicial padrão
   listLimit: number = 151;
-  listLimitText: string = `Mostrando ${this.listLimit} itens`
-  previousArrowSrc: string = 'assets/images/icons-prev.png';
-  nextArrowSrc: string = 'assets/images/icons-next.png';
-  requestListUrl: string = `${this.pokemonListSrc}`
 
-  constructor() { }
+  readonly previousArrowSrc: string = 'assets/images/icons-prev.png';
+  readonly nextArrowSrc: string = 'assets/images/icons-next.png';
+  
+  pokemonSearch: string = '';
+  pokemonArray: any[];
+
+
+  constructor(private pokeapiService: PokeapiService) { }
 
   ngOnInit(): void {
+    // TODO: Subscribe do evento do servico para puxar os 
+    // pokemons
+    this.pokeapiService.setListLimit(this.listLimit);
+    // this.pokemonArray = this.pokeapiService.getPokemonList();
+    this.pokeapiService.getPokemonList().subscribe(
+      res => this.pokemonArray = res
+    );
+  }
+
+  getPokemonImage(pokemonId: number){
+    return this.pokeapiService.getPokemonSprite(`${pokemonId}`);
   }
 
 
@@ -31,7 +45,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   changeListLimit(){
-
+    this.pokeapiService.setListLimit(this.listLimit);
   }
 
 }

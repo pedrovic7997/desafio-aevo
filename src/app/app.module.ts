@@ -9,6 +9,9 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
 import { PokemonComparisonComponent } from './pokemon-comparison/pokemon-comparison.component';
 import { ComparisonBoxComponent } from './comparison-box/comparison-box.component';
+import { PokeapiService } from './pokeapi.service';
+import { HttpClientModule } from '@angular/common/http';
+import { PokemonListItemComponent } from './pokemon-list-item/pokemon-list-item.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +19,18 @@ import { ComparisonBoxComponent } from './comparison-box/comparison-box.componen
     PokemonListComponent,
     PokemonDetailsComponent,
     PokemonComparisonComponent,
-    ComparisonBoxComponent
+    ComparisonBoxComponent,
+    PokemonListItemComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    PokeapiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
