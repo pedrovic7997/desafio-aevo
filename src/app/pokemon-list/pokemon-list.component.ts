@@ -62,6 +62,7 @@ export class PokemonListComponent implements OnInit {
   onReturnClick(){
     this.returnToList = false;
     if(this.noMatch === true) this.noMatch = false;
+    this.pokemonSearch = '';
     this.pokeapiService.getPokemonList().subscribe(
       res => this.pokemonArray = res
     );
