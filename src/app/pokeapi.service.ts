@@ -3,17 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-export interface PokeapiListItem {
-  name: string;
-  url: string;
-}
-
-export interface PokeapiListResponse {
-  count: number;
-  next: string;
-  previous: string;
-  results: Array<PokeapiListItem>;
-}
+import { PokeapiListResponse } from './pokeapi-list-response';
+import { PokeapiListItem } from './pokeapi-list-item';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +17,6 @@ export class PokeapiService {
   private listLimit: number;
 
   private requestImageUrl: string;
-
   private responseBody: any;
 
   constructor(private http: HttpClient) { }
@@ -40,9 +30,9 @@ export class PokeapiService {
         ));
   }
 
-  getPokemonSprite(pokemonId: string){
+  getPokemonSpriteUrl(pokemonId: string){
     this.requestImageUrl = this.pokemonItemImgSrc + pokemonId + '.png';
-    return this.http.get(this.requestImageUrl, { responseType: 'blob' });
+    return this.requestImageUrl;
   }
   
   setListLimit(listLimit: number){
@@ -58,5 +48,10 @@ export class PokeapiService {
   getPreviousRequest(){
     this.requestListUrl = this.responseBody?.previous;
     return this.getPokemonList();
+  }
+
+  extractPokemonId(pokemonUrl: string): number {
+    let id: string = pokemonUrl.split("/")[6];
+    return id ? Number(id) : -1;
   }
 }

@@ -12,16 +12,18 @@
             <img [src]="nextArrowSrc" class="previous-next-image">
         </button>
     </div>
-
-    <!-- TODO: FAZER O CAMPO DE BUSCA -->
-
+    
     <div class="container list-container">
-        <div *ngFor="let pokemon of pokemonArray" class="d-flex align-items-center list-item">
-            <!-- <img [src]="getPokemonImage(pokemon.id) | async"> -->
-            <!-- TODO: MONTAR UM NOVO COMPONENTE -->
-            <div>
-                {{ pokemon.name }}
-            </div>
+        <form class="d-flex search-box">
+            <input class="form-control me-2" 
+            type="search" placeholder="Search" aria-label="Search"
+            [(ngModel)]="pokemonSearch">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <div *ngFor="let pokemon of pokemonArray">
+            <pokemon-list-item
+            [pokemonItem]="pokemon"
+            ></pokemon-list-item>
         </div>
     </div>
 </div>

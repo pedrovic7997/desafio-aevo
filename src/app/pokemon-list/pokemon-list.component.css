@@ -16,6 +16,10 @@
 .list-container {
     background-color: #e0e1e271;
     border-radius: 9px;
-    padding: 5px;
+    padding: 20px;
     overflow: scroll;
+}
+
+.search-box {
+    margin-bottom: 10px;
 }

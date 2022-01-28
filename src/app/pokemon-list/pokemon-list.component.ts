@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PokeapiListItem } from '../pokeapi-list-item';
 import { PokeapiService } from '../pokeapi.service';
 
 @Component({
@@ -16,14 +17,15 @@ export class PokemonListComponent implements OnInit {
   readonly nextArrowSrc: string = 'assets/images/icons-next.png';
   
   pokemonSearch: string = '';
-  pokemonArray: any[];
+  pokemonArray: PokeapiListItem[];
 
 
   constructor(private pokeapiService: PokeapiService) { }
 
   ngOnInit(): void {
-    // TODO: Subscribe do evento do servico para puxar os 
-    // pokemons
+    // TODO: Fazer um Inscription com o Subscribe aqui no 
+    // OnInit e Unsubscribe no OnDestroy
+
     this.pokeapiService.setListLimit(this.listLimit);
     // this.pokemonArray = this.pokeapiService.getPokemonList();
     this.pokeapiService.getPokemonList().subscribe(
@@ -31,9 +33,9 @@ export class PokemonListComponent implements OnInit {
     );
   }
 
-  getPokemonImage(pokemonId: number){
-    return this.pokeapiService.getPokemonSprite(`${pokemonId}`);
-  }
+  // getPokemonImage(pokemonId: number){
+  //   return this.pokeapiService.getPokemonSprite(`${pokemonId}`);
+  // }
 
 
   onPreviousClick(){
