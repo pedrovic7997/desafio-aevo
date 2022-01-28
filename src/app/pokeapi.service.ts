@@ -86,14 +86,21 @@ export class PokeapiService {
       `?limit=${this.listLimit}`;
   }
 
-  getNextRequest(){
-    this.requestListUrl = this.currentNext;
-    return this.getPokemonList();
+  getNextRequest(): boolean {
+    if(this.currentNext !== ''){
+      this.requestListUrl = this.currentNext;
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  getPreviousRequest(){
-    this.requestListUrl = this.currentPrevious;
-    return this.getPokemonList();
+  getPreviousRequest(): boolean {
+    if(this.currentPrevious !== ''){
+      this.requestListUrl = this.currentPrevious;
+      return true;
+    }
+    return false;
   }
 
   // Métodos utilitarios
@@ -102,7 +109,5 @@ export class PokeapiService {
     let id: string = pokemonUrl.split("/")[6];
     return id ? Number(id) : -1;
   }
-
-  // private handleError(error:)
 
 }

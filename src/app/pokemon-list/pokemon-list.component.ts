@@ -36,11 +36,21 @@ export class PokemonListComponent implements OnInit {
 
 
   onPreviousClick() {
-
+    let hasUrl: boolean = this.pokeapiService.getPreviousRequest();
+    if(hasUrl){
+      this.pokeapiService.getPokemonList().subscribe(
+        res => this.pokemonArray = res
+      );
+    }
   }
 
   onNextClick() {
-
+    let hasUrl: boolean = this.pokeapiService.getNextRequest();
+    if(hasUrl){
+      this.pokeapiService.getPokemonList().subscribe(
+        res => this.pokemonArray = res
+      );
+    }
   }
 
   onSearchClick(pokemonSearch: string) {
@@ -78,36 +88,6 @@ export class PokemonListComponent implements OnInit {
     this.pokeapiService.getPokemonList().subscribe(
       res => this.pokemonArray = res
     );
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-
-    console.log(changes);
-    
-    for (let propName in changes) {
-      
-      let chng = changes[propName];
-      let cur  = JSON.stringify(chng.currentValue);
-      let prev = JSON.stringify(chng.previousValue);
-      
-      if(cur !== prev){
-        switch(propName){
-          case "listLimit": {
-            console.log(this.listLimit);
-            this.pokeapiService.getPokemonList()
-              .subscribe(
-                res => this.pokemonArray = res
-              );
-            break;
-          }
-
-          default: {
-            
-            break;
-          }
-        }
-      }
-    }
   }
 
 }
