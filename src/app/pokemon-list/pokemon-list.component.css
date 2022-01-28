@@ -22,3 +22,11 @@
 .search-container {
     margin-bottom: 10px;
 }
+
+.no-match-text {
+    margin: 20px;
+}
+
+.return-button{
+    margin-right: 5px;
+}

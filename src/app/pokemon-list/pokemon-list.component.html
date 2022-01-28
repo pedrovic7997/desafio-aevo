@@ -14,7 +14,10 @@
     
     <div class="container list-container">
         <div class="d-flex justify-content-between search-container">
-            <button (click)="onReturnClick()" *ngIf="returnToList" >Retornar a lista</button>
+            <button (click)="onReturnClick()" *ngIf="returnToList"
+                class="btn btn-outline-warning return-button">
+                Retornar
+            </button>
             <input class="form-control me-2" 
                 type="search" placeholder="Nome do Pokemon" aria-label="Search"
                 #inputSearch>
@@ -23,7 +26,7 @@
                 Buscar
             </button>
         </div>
-        <div *ngIf="noMatch" >
+        <div *ngIf="noMatch" class="no-match-text">
             Nenhum pokemon encontrado
         </div>
         <div *ngIf="!noMatch">
