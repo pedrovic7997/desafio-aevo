@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { PokeapiListResponse } from './pokeapi-list-response';
 import { PokeapiListItem } from './pokeapi-list-item';
+import { PokeapiPokemon } from './pokeapi-pokemon';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,14 @@ import { PokeapiListItem } from './pokeapi-list-item';
 export class PokeapiService {
 
   private readonly pokemonItemImgSrc: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
-  private readonly pokemonListSrc: string = 'https://pokeapi.co/api/v2/pokemon/';
+  private readonly pokemonItemSrc: string = 'https://pokeapi.co/api/v2/pokemon/';
+  
   private requestListUrl: string = '';
+  private requestPokemonUrl: string = '';
   private listLimit: number;
-
   private requestImageUrl: string;
-  private responseBody: any;
+  private currentNext: string = '';
+  private currentPrevious: string = '';
 
   constructor(private http: HttpClient) { }
 
@@ -26,8 +29,25 @@ export class PokeapiService {
   getPokemonList(): Observable<Array<PokeapiListItem>>{
     return this.http.get<PokeapiListResponse>(this.requestListUrl)
       .pipe(map(
-        res => res?.results
+        res => {
+          if(typeof res?.next !== null){
+            this.currentNext = res?.next;            
+          } else {
+            this.currentNext = '';
+          }
+          if(typeof res?.previous !== null){            
+            this.currentPrevious = res?.previous;
+          } else {
+            this.currentPrevious = '';
+          }
+          return res?.results;
+        }
         ));
+  }
+
+  getPokemonSearch(pokemonSearch: string): Observable<PokeapiPokemon> {
+    this.requestPokemonUrl = this.pokemonItemSrc + pokemonSearch;
+    return this.http.get<PokeapiPokemon>(this.requestPokemonUrl);
   }
 
   getPokemonSpriteUrl(pokemonId: string){
@@ -37,18 +57,20 @@ export class PokeapiService {
   
   setListLimit(listLimit: number){
     this.listLimit = listLimit;
-    this.requestListUrl = this.pokemonListSrc + `?${this.listLimit}`;
+    this.requestListUrl = this.pokemonItemSrc + `?limit=${this.listLimit}`;
   }
 
   getNextRequest(){
-    this.requestListUrl = this.responseBody?.next;
+    this.requestListUrl = this.currentNext;
     return this.getPokemonList();
   }
 
   getPreviousRequest(){
-    this.requestListUrl = this.responseBody?.previous;
+    this.requestListUrl = this.currentPrevious;
     return this.getPokemonList();
   }
+
+  // Métodos utilitarios
 
   extractPokemonId(pokemonUrl: string): number {
     let id: string = pokemonUrl.split("/")[6];

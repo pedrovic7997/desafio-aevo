@@ -14,12 +14,17 @@
     </div>
     
     <div class="container list-container">
-        <form class="d-flex search-box">
+        <div class="d-flex justify-content-between search-container">
             <input class="form-control me-2" 
-            type="search" placeholder="Search" aria-label="Search"
-            [(ngModel)]="pokemonSearch">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+                type="search" placeholder="Nome do Pokemon" aria-label="Search"
+                [(ngModel)]="pokemonSearch">
+            <button class="btn btn-outline-success" type="submit">
+                Buscar
+            </button>
+            <button (click)="onReturnClick()" *ngIf="returnToList" >
+
+            </button>
+        </div>
         <div *ngFor="let pokemon of pokemonArray">
             <pokemon-list-item
             [pokemonItem]="pokemon"

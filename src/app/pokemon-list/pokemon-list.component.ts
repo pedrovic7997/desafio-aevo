@@ -9,25 +9,21 @@ import { PokeapiService } from '../pokeapi.service';
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent implements OnInit {
-  
+
   // Valor inicial padrão
   listLimit: number = 151;
 
   readonly previousArrowSrc: string = 'assets/images/icons-prev.png';
   readonly nextArrowSrc: string = 'assets/images/icons-next.png';
-  
+
   pokemonSearch: string = '';
   pokemonArray: PokeapiListItem[];
-
+  returnToList: boolean = false;
 
   constructor(private pokeapiService: PokeapiService) { }
 
-  ngOnInit(): void {
-    // TODO: Fazer um Inscription com o Subscribe aqui no 
-    // OnInit e Unsubscribe no OnDestroy
-
+  ngOnInit(): void {    
     this.pokeapiService.setListLimit(this.listLimit);
-    // this.pokemonArray = this.pokeapiService.getPokemonList();
     this.pokeapiService.getPokemonList().subscribe(
       res => this.pokemonArray = res
     );
@@ -38,16 +34,35 @@ export class PokemonListComponent implements OnInit {
   // }
 
 
-  onPreviousClick(){
+  onPreviousClick() {
 
   }
 
-  onNextClick(){
+  onNextClick() {
 
   }
 
-  changeListLimit(){
+  onSearchClick(pokemonSearch: string) {
+    this.returnToList = true
+    this.pokeapiService.getPokemonSearch(pokemonSearch).subscribe(
+      res => this.pokemonArray
+    );
+  }
+
+  onReturnClick(){
+    this.returnToList = false;
+  }
+
+  changeListLimit() {
     this.pokeapiService.setListLimit(this.listLimit);
+  }
+
+  ngOnChanges() {
+    if(this.returnToList === false){
+      this.pokeapiService.getPokemonList().subscribe(
+        res => this.pokemonArray = res
+      );
+    }
   }
 
 }

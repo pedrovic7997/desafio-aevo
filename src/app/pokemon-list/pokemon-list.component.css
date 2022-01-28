@@ -17,9 +17,8 @@
     background-color: #e0e1e271;
     border-radius: 9px;
     padding: 20px;
-    overflow: scroll;
 }
 
-.search-box {
+.search-container {
     margin-bottom: 10px;
 }

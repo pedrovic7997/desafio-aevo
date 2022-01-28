@@ -1,9 +1,10 @@
 <div class="d-flex align-items-center list-item">
     <img [src]="imageUrl">
-    <button class="list-item-pokemon-button">
+    <button class="list-item-pokemon-button"
+        (click)="onPokemonClick()">
         {{ pokemonItem.name | titlecase }}
     </button>
-    <button (click)="onClick()" class="add-button">
+    <button (click)="onAddClick()" class="add-button">
         <img [src]="addIconSrc">
     </button>
 </div>
