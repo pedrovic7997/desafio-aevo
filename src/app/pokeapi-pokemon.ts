@@ -16,6 +16,7 @@ interface PokeapiPokemonType {
 }
 
 export interface PokeapiPokemon {
+    id: number;
     name: string;
     sprites: {
         back_default: string;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
 
 import { PokeapiListResponse } from './pokeapi-list-response';
 import { PokeapiListItem } from './pokeapi-list-item';
@@ -21,6 +21,7 @@ export class PokeapiService {
   private requestImageUrl: string;
   private currentNext: string = '';
   private currentPrevious: string = '';
+  private verifierPokemonListBuilder: PokeapiListItem[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -50,14 +51,39 @@ export class PokeapiService {
     return this.http.get<PokeapiPokemon>(this.requestPokemonUrl);
   }
 
+  verifyPokemonSearch(pokemonSearch: string): Observable<Array<PokeapiListItem>> {
+    this.requestPokemonUrl = this.pokemonItemSrc + pokemonSearch;
+    let verifierPokemonListBuilder: PokeapiListItem[] = [];
+    return this.http
+      .get<PokeapiPokemon>(this.requestPokemonUrl, {observe: 'response'})
+      .pipe(map( res => {        
+        // console.log(res.status);
+        // console.log(res.statusText);
+        verifierPokemonListBuilder.push(
+          <PokeapiListItem>{
+            name: res.body?.name,
+            url: this.pokemonItemSrc+`${res.body?.id}/`
+          });
+        return verifierPokemonListBuilder;
+      } ))
+      .pipe(catchError(
+        err => {
+          return of(Array<PokeapiListItem>());
+        }
+      ))
+    ;
+  }
+
   getPokemonSpriteUrl(pokemonId: string){
-    this.requestImageUrl = this.pokemonItemImgSrc + pokemonId + '.png';
+    this.requestImageUrl = this.pokemonItemImgSrc +
+      pokemonId + '.png';
     return this.requestImageUrl;
   }
   
   setListLimit(listLimit: number){
     this.listLimit = listLimit;
-    this.requestListUrl = this.pokemonItemSrc + `?limit=${this.listLimit}`;
+    this.requestListUrl = this.pokemonItemSrc +
+      `?limit=${this.listLimit}`;
   }
 
   getNextRequest(){
@@ -76,4 +102,7 @@ export class PokeapiService {
     let id: string = pokemonUrl.split("/")[6];
     return id ? Number(id) : -1;
   }
+
+  // private handleError(error:)
+
 }

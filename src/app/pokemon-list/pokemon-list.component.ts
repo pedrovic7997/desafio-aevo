@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 
 import { PokeapiListItem } from '../pokeapi-list-item';
 import { PokeapiService } from '../pokeapi.service';
@@ -19,6 +19,7 @@ export class PokemonListComponent implements OnInit {
   pokemonSearch: string = '';
   pokemonArray: PokeapiListItem[];
   returnToList: boolean = false;
+  noMatch: boolean = false;
 
   constructor(private pokeapiService: PokeapiService) { }
 
@@ -44,24 +45,67 @@ export class PokemonListComponent implements OnInit {
 
   onSearchClick(pokemonSearch: string) {
     this.returnToList = true
-    this.pokeapiService.getPokemonSearch(pokemonSearch).subscribe(
-      res => this.pokemonArray
-    );
+    this.pokemonSearch = pokemonSearch.toLowerCase();
+    this.pokeapiService
+      .verifyPokemonSearch(this.pokemonSearch)
+      .subscribe(
+        res => {
+          if(res.length !== 0){
+            this.pokemonArray = res;
+          } else {
+            this.noMatch = true;
+          }
+        }
+      );
   }
 
   onReturnClick(){
     this.returnToList = false;
+    if(this.noMatch === true) this.noMatch = false;
+    this.pokeapiService.getPokemonList().subscribe(
+      res => this.pokemonArray = res
+    );
   }
+  
+  // changeListLimit() {
+  //   // this.listLimit = Number(listLimit);
+  //   this.pokeapiService.setListLimit(this.listLimit);
+  // }
 
-  changeListLimit() {
+  onBlurLimit(){
     this.pokeapiService.setListLimit(this.listLimit);
+    this.pokeapiService.getPokemonList().subscribe(
+      res => this.pokemonArray = res
+    );
   }
 
-  ngOnChanges() {
-    if(this.returnToList === false){
-      this.pokeapiService.getPokemonList().subscribe(
-        res => this.pokemonArray = res
-      );
+  ngOnChanges(changes: SimpleChanges) {
+
+    console.log(changes);
+    
+    for (let propName in changes) {
+      
+      let chng = changes[propName];
+      let cur  = JSON.stringify(chng.currentValue);
+      let prev = JSON.stringify(chng.previousValue);
+      
+      if(cur !== prev){
+        switch(propName){
+          case "listLimit": {
+            console.log(this.listLimit);
+            this.pokeapiService.getPokemonList()
+              .subscribe(
+                res => this.pokemonArray = res
+              );
+            break;
+          }
+
+          default: {
+            
+            break;
+          }
+        }
+      }
     }
   }
 

@@ -6,8 +6,7 @@
         <section class="align-self-center">
             Mostrando: 
         </section>
-        <input type="text" [(ngModel)]="listLimit"
-        (enter)="changeListLimit()" class="input-field form-control">
+        <input type="text" [(ngModel)]="listLimit" (blur)="onBlurLimit()" class="input-field form-control">
         <button (click)="onNextClick()" class="previous-next-button">
             <img [src]="nextArrowSrc" class="previous-next-image">
         </button>
@@ -15,20 +14,24 @@
     
     <div class="container list-container">
         <div class="d-flex justify-content-between search-container">
+            <button (click)="onReturnClick()" *ngIf="returnToList" >Retornar a lista</button>
             <input class="form-control me-2" 
                 type="search" placeholder="Nome do Pokemon" aria-label="Search"
-                [(ngModel)]="pokemonSearch">
-            <button class="btn btn-outline-success" type="submit">
+                #inputSearch>
+            <button class="btn btn-outline-success" type="submit"
+                (click)="onSearchClick(inputSearch.value)">
                 Buscar
             </button>
-            <button (click)="onReturnClick()" *ngIf="returnToList" >
-
-            </button>
         </div>
-        <div *ngFor="let pokemon of pokemonArray">
-            <pokemon-list-item
-            [pokemonItem]="pokemon"
-            ></pokemon-list-item>
+        <div *ngIf="noMatch" >
+            Nenhum pokemon encontrado
+        </div>
+        <div *ngIf="!noMatch">
+            <div *ngFor="let pokemon of pokemonArray">
+                <pokemon-list-item
+                [pokemonItem]="pokemon"
+                ></pokemon-list-item>
+            </div>
         </div>
     </div>
 </div>
