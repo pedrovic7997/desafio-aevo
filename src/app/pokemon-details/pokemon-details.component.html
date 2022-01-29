@@ -1,51 +1,19 @@
 <div class="container">
     <div class="d-flex justify-content-center align-items-center details-buttons-container">
         <a routerLink="/">
-            <button class="btn btn-outline-warning btn-lg return-button" 
-                title="Retornar a lista">
-                <
+            <button class="btn btn-outline-warning return-button" 
+                title="">
+                Retornar a lista
             </button>
         </a>
-        <button class="btn btn-outline-danger btn-lg"
-                title="Comparar Pokemon">
-            +
+        <button class="btn btn-outline-danger"
+                title="">
+            Comparar Pokemon
         </button>
     </div>
 
     <div class="d-flex justify-content-center">
-        <div class="d-flex flex-column pokemon-container">
-            <div class="d-flex justify-content-center pokemon-name">
-                <div>
-                    {{ pokemonDetails.name | titlecase }}
-                </div>
-            </div>
-            <img [src]="pokemonDetails.sprites.front_default"
-            class="pokemon-image">
-            <div class="d-flex justify-content-center">
-                <p *ngFor="let type of pokemonDetails.types"
-                    class="pokemon-type"
-                    [ngStyle]="{
-                        'backgroundColor': typeColorMap[type.type.name].background, 
-                        'color': typeColorMap[type.type.name].fontColor
-                    }">
-                    {{ type.type.name | titlecase }}
-                </p>
-            </div>
-            <div class="pokemon-stats">
-                <div *ngFor="let stat of pokemonDetails.stats"
-                    class="d-flex justify-content-between">
-                    <div>
-                        {{ stat.stat.name | titlecase | removeDash }}
-                    </div>
-                    <div>
-                        {{ stat.base_stat }}
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex justify-content-center pokemon-total-stat">
-                Total stats: {{ statsTotal }}
-            </div>
-        </div>
+        <pokemon-card [pokemonId]="pokemonId"></pokemon-card>
     </div>
 </div>
     

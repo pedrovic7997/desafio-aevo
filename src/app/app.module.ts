@@ -13,6 +13,7 @@ import { PokeapiService } from './pokeapi.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonListItemComponent } from './pokemon-list-item/pokemon-list-item.component';
 import { RemoveDashPipe } from './remove-dash.pipe';
+import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RemoveDashPipe } from './remove-dash.pipe';
     PokemonComparisonComponent,
     ComparisonBoxComponent,
     PokemonListItemComponent,
-    RemoveDashPipe
+    RemoveDashPipe,
+    PokemonCardComponent
   ],
   imports: [
     BrowserModule,
