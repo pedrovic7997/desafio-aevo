@@ -12,6 +12,7 @@ import { ComparisonBoxComponent } from './comparison-box/comparison-box.componen
 import { PokeapiService } from './pokeapi.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonListItemComponent } from './pokemon-list-item/pokemon-list-item.component';
+import { RemoveDashPipe } from './remove-dash.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PokemonListItemComponent } from './pokemon-list-item/pokemon-list-item.
     PokemonDetailsComponent,
     PokemonComparisonComponent,
     ComparisonBoxComponent,
-    PokemonListItemComponent
+    PokemonListItemComponent,
+    RemoveDashPipe
   ],
   imports: [
     BrowserModule,
