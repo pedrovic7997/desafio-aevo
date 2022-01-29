@@ -7,7 +7,7 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 
 const routes: Routes = [
   { path: 'comparison', component: PokemonComparisonComponent },
-  { path: 'details', component: PokemonDetailsComponent },
+  { path: 'pokemon/:id', component: PokemonDetailsComponent },
   { path: '', component: PokemonListComponent}
 ];
 

@@ -26,8 +26,8 @@
                 Buscar
             </button>
         </div>
-        <div *ngIf="noMatch" class="no-match-text">
-            Nenhum pokemon encontrado
+        <div *ngIf="noMatch" class="d-flex justify-content-center no-match-text">
+            <p>Nenhum pokemon encontrado</p>
         </div>
         <div *ngIf="!noMatch">
             <div *ngFor="let pokemon of pokemonArray">

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { PokeapiListItem } from '../pokeapi-list-item';
 import { PokeapiService } from '../pokeapi.service';
@@ -19,7 +20,10 @@ export class PokemonListItemComponent implements OnInit {
   imageUrl: string;
   addIconSrc: string = 'assets/images/icon-plus.png';
 
-  constructor(private pokeapiService: PokeapiService) { }
+  constructor(
+    private pokeapiService: PokeapiService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.pokemonId = this.pokeapiService
@@ -37,9 +41,10 @@ export class PokemonListItemComponent implements OnInit {
   }
 
   onPokemonClick(): void {
-    this.pokemonSelected.emit({
-      pokemonItem: this.pokemonItem
-    });
+    // this.pokemonSelected.emit({
+    //   pokemonItem: this.pokemonItem
+    // });
+    this.router.navigate(['/pokemon', this.pokemonId]);
   }
 
 }

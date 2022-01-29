@@ -21,11 +21,10 @@ export class PokeapiService {
   private requestImageUrl: string;
   private currentNext: string = '';
   private currentPrevious: string = '';
-  private verifierPokemonListBuilder: PokeapiListItem[] = [];
 
   constructor(private http: HttpClient) { }
 
-  // Métodos para atender o PokemonListComponent
+  // Metodos para atender a listagem dos Pokemon
 
   getPokemonList(): Observable<Array<PokeapiListItem>>{
     return this.http.get<PokeapiListResponse>(this.requestListUrl)
@@ -46,19 +45,12 @@ export class PokeapiService {
         ));
   }
 
-  getPokemonSearch(pokemonSearch: string): Observable<PokeapiPokemon> {
-    this.requestPokemonUrl = this.pokemonItemSrc + pokemonSearch;
-    return this.http.get<PokeapiPokemon>(this.requestPokemonUrl);
-  }
-
   verifyPokemonSearch(pokemonSearch: string): Observable<Array<PokeapiListItem>> {
     this.requestPokemonUrl = this.pokemonItemSrc + pokemonSearch;
     let verifierPokemonListBuilder: PokeapiListItem[] = [];
     return this.http
       .get<PokeapiPokemon>(this.requestPokemonUrl, {observe: 'response'})
-      .pipe(map( res => {        
-        // console.log(res.status);
-        // console.log(res.statusText);
+      .pipe(map( res => {
         verifierPokemonListBuilder.push(
           <PokeapiListItem>{
             name: res.body?.name,
@@ -99,15 +91,22 @@ export class PokeapiService {
     if(this.currentPrevious !== ''){
       this.requestListUrl = this.currentPrevious;
       return true;
+    } else {
+      return false;
     }
-    return false;
   }
 
-  // Métodos utilitarios
+  // Metodos para busca de detalhes dos Pokemons
+
+  getPokemonDetails(pokemonId: number): Observable<PokeapiPokemon> {
+    this.requestPokemonUrl = this.pokemonItemSrc + `${pokemonId}/`;
+    return this.http.get<PokeapiPokemon>(this.requestPokemonUrl);
+  }
+
+  // Metodos utilitarios
 
   extractPokemonId(pokemonUrl: string): number {
     let id: string = pokemonUrl.split("/")[6];
     return id ? Number(id) : -1;
   }
-
 }
