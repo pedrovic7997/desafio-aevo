@@ -1,25 +1,28 @@
-<div class="d-flex justify-content-center compare-container">
-    <div class="d-flex flex-column align-items-center">
-        <img [src]="PokemonBox1Src" class="pokemon-box">
-        <button [title]="clearBoxHoverText" class="clear-button">
-            <img [src]="clearButtonSrc" class="clear-button-image">
-        </button>
-    </div>
-    <div class="d-flex align-items-center">
-        <img [src]="versusSrc" class="versus-image">
-    </div>
-    <div class="d-flex flex-column align-items-center">
-        <img [src]="PokemonBox2Src" class="pokemon-box">
-        <button  [title]="clearBoxHoverText" class="clear-button">
-            <img [src]="clearButtonSrc" class="clear-button-image">
-        </button>
-    </div>
-    <div class="d-flex align-items-center">
-        <button 
-        class="btn btn-danger compare-button"
-        [ngClass]="{
-            disabled: !isPokemon1Set || !isPokemon2Set
-        }" 
-        >Comparar</button>
-    </div>
+<div class="d-flex row compare-container align-items-center">
+    <div class="d-flex col-lg-6 col-md-12 col-sm-12 col-xs-12 align-items-center">
+        <div class="d-flex flex-column align-items-center">
+            <img [src]="pokemonBox1Src" class="pokemon-box">
+            <button [title]="clearBoxHoverText" class="clear-button"
+                (click)="unsetPokemon1()">
+                <img [src]="clearButtonSrc" class="clear-button-image">
+            </button>
+        </div>
+        <div class="d-flex align-items-center">
+            <img [src]="versusSrc" class="versus-image">
+        </div>
+        <div class="d-flex flex-column align-items-center">
+            <img [src]="pokemonBox2Src" class="pokemon-box">
+            <button  [title]="clearBoxHoverText" class="clear-button"
+                (click)="unsetPokemon2()" >
+                <img [src]="clearButtonSrc" class="clear-button-image">
+            </button>
+        </div>
+    </div> 
+
+    <button 
+    class="btn btn-danger compare-button col-lg-3 col-md-12 col-sm-12 col-xs-12"
+    [ngClass]="{
+        disabled: !isPokemon1Set || !isPokemon2Set
+    }" 
+    (click)="compare()" >Comparar</button>
 </div>

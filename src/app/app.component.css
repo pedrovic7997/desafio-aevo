@@ -4,6 +4,7 @@ nav {
 
 .comparison-info {
     margin: 40px;
+    width: 100%;
 }
 
 .logo {
@@ -19,3 +20,9 @@ nav {
 .text-content {
     margin: 10px;
 }
+@media only screen and (max-width: 768px) {
+    .compare-content {
+        padding: 0;
+    }
+}
+

@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { EventEmitter, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { PokeapiListResponse } from './pokeapi-list-response';
 import { PokeapiListItem } from './pokeapi-list-item';
 import { PokeapiPokemon } from './pokeapi-pokemon';
+import { Comparison } from './comparison';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,9 @@ export class PokeapiService {
 
   private readonly pokemonItemImgSrc: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
   private readonly pokemonItemSrc: string = 'https://pokeapi.co/api/v2/pokemon/';
+
+  pokemonAdded = new EventEmitter<number>();
+  compare = new EventEmitter<Comparison>();
   
   private requestListUrl: string = '';
   private requestPokemonUrl: string = '';
@@ -66,13 +70,13 @@ export class PokeapiService {
     ;
   }
 
-  getPokemonSpriteUrl(pokemonId: string){
+  getPokemonSpriteUrl(pokemonId: string): string{
     this.requestImageUrl = this.pokemonItemImgSrc +
       pokemonId + '.png';
     return this.requestImageUrl;
   }
   
-  setListLimit(listLimit: number){
+  setListLimit(listLimit: number): void{
     this.listLimit = listLimit;
     this.requestListUrl = this.pokemonItemSrc +
       `?limit=${this.listLimit}`;
@@ -101,6 +105,16 @@ export class PokeapiService {
   getPokemonDetails(pokemonId: number): Observable<PokeapiPokemon> {
     this.requestPokemonUrl = this.pokemonItemSrc + `${pokemonId}/`;
     return this.http.get<PokeapiPokemon>(this.requestPokemonUrl);
+  }
+
+  // Metodos para comunicacao entre Componentes
+
+  addPokemon(pokemonId: number): void {
+    this.pokemonAdded.emit(pokemonId);
+  }
+
+  comparePokemons(comparison: Comparison): void {
+    this.compare.emit(comparison);
   }
 
   // Metodos utilitarios

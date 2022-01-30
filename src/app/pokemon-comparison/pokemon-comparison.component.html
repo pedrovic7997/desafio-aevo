@@ -1,1 +1,6 @@
-<p>pokemon-comparison works!</p>
+<div class="d-flex justify-content-center">
+    <pokemon-card [pokemonId]="pokemonId1"
+        (totalStat)="getPokemon1TotalStat($event)"></pokemon-card>
+    <pokemon-card [pokemonId]="pokemonId2"
+        (totalStat)="getPokemon2TotalStat($event)"></pokemon-card>
+</div>

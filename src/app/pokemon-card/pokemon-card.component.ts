@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { PokeapiPokemon } from '../pokeapi-pokemon';
 import { PokeapiService } from '../pokeapi.service';
@@ -12,6 +12,8 @@ export class PokemonCardComponent implements OnInit {
 
   @Input() pokemonId: number;
   
+  @Output() totalStat = new EventEmitter<number>();
+
   pokemonDetails: PokeapiPokemon;
   statsTotal: number = 0;
 
@@ -50,5 +52,6 @@ export class PokemonCardComponent implements OnInit {
           );
         }
       );
+    this.totalStat.emit(this.statsTotal);
   }
 }

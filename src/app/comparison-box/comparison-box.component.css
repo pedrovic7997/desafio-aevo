@@ -14,6 +14,8 @@
 .versus-image {
     width: 70px;
     height: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 button > img{
@@ -22,7 +24,7 @@ button > img{
 
 .pokemon-box {
     border-radius: 3px;
-    width: 40%;
+    width: 100px;
     height: auto;
 }
 
@@ -31,9 +33,24 @@ button > img{
     background-color: #7aaef371;
     margin-left: 20px;
     padding: 10px;
+    /* width: 40rem; */
+    height: 150px;
 }
 
 .compare-button {
-    margin-left: 20px;
+    margin-left: auto;
     margin-right: 20px;
 }
+ 
+@media only screen and (max-width: 1200px) {
+    .pokemon-box {
+        width: 80px;
+    }   
+}
+
+@media only screen and (max-width: 768px) {
+    .compare-container {
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+} 

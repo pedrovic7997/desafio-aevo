@@ -13,9 +13,6 @@ export class PokemonListItemComponent implements OnInit {
 
   @Input() pokemonItem: PokeapiListItem;
   
-  @Output() pokemonSelected = new EventEmitter();
-  @Output() pokemonAdded = new EventEmitter();
-  
   pokemonId: number;
   imageUrl: string;
   addIconSrc: string = 'assets/images/icon-plus.png';
@@ -33,17 +30,10 @@ export class PokemonListItemComponent implements OnInit {
   }
 
   onAddClick(): void {
-    this.pokemonAdded.emit({
-      pokemonItem: this.pokemonItem,
-      pokemonId: this.pokemonId,
-      imageUrl: this.imageUrl
-    });
+    this.pokeapiService.addPokemon(this.pokemonId);
   }
 
   onPokemonClick(): void {
-    // this.pokemonSelected.emit({
-    //   pokemonItem: this.pokemonItem
-    // });
     this.router.navigate(['/pokemon', this.pokemonId]);
   }
 

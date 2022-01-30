@@ -30,12 +30,7 @@ export class PokemonListComponent implements OnInit {
     );
   }
 
-  // getPokemonImage(pokemonId: number){
-  //   return this.pokeapiService.getPokemonSprite(`${pokemonId}`);
-  // }
-
-
-  onPreviousClick() {
+  onPreviousClick(): void {
     let hasUrl: boolean = this.pokeapiService.getPreviousRequest();
     if(hasUrl){
       this.pokeapiService.getPokemonList().subscribe(
@@ -44,7 +39,7 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
-  onNextClick() {
+  onNextClick(): void {
     let hasUrl: boolean = this.pokeapiService.getNextRequest();
     if(hasUrl){
       this.pokeapiService.getPokemonList().subscribe(
@@ -53,7 +48,7 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
-  onSearchClick(pokemonSearch: string) {
+  onSearchClick(pokemonSearch: string): void {
     this.returnToList = true
     this.pokemonSearch = pokemonSearch.toLowerCase();
     this.pokeapiService
@@ -69,7 +64,7 @@ export class PokemonListComponent implements OnInit {
       );
   }
 
-  onReturnClick(){
+  onReturnClick(): void {
     this.returnToList = false;
     if(this.noMatch === true) this.noMatch = false;
     this.pokemonSearch = '';
@@ -77,13 +72,8 @@ export class PokemonListComponent implements OnInit {
       res => this.pokemonArray = res
     );
   }
-  
-  // changeListLimit() {
-  //   // this.listLimit = Number(listLimit);
-  //   this.pokeapiService.setListLimit(this.listLimit);
-  // }
 
-  onBlurLimit(){
+  onBlurLimit(): void {
     this.pokeapiService.setListLimit(this.listLimit);
     this.pokeapiService.getPokemonList().subscribe(
       res => this.pokemonArray = res

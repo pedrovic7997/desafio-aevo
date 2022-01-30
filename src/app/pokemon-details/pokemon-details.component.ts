@@ -29,8 +29,12 @@ export class PokemonDetailsComponent implements OnInit {
       }
     );
   }
+
+  addPokemonToCompare(): void {
+    this.pokeapiService.addPokemon(this.pokemonId);
+  }
   
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 }

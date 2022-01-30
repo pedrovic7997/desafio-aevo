@@ -12,4 +12,7 @@ export class AppComponent {
   text: string = "Clique em um Pokemon ou selecione dois e clique em ‘Comparar’";
   showComparison: boolean = true;
 
+  hideCompare(): void {
+    this.showComparison = !this.showComparison;
+  }
 }
