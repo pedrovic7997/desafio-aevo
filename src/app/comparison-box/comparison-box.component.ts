@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -11,8 +12,6 @@ import { PokeapiService } from '../pokeapi.service';
   styleUrls: ['./comparison-box.component.css']
 })
 export class ComparisonBoxComponent implements OnInit {
-
-  @Output() comparingPokemons = new EventEmitter<any>();
   
   private subscription: Subscription;
   
@@ -66,9 +65,8 @@ export class ComparisonBoxComponent implements OnInit {
   }
 
   compare(): void {
-    this.comparingPokemons.emit();
-    this.pokeapiService.comparePokemons(this.comparison);
-    this.router.navigate(['/compare']);
+    this.router.navigate(['/compare'],
+      { queryParams: this.comparison });
   }
 
   ngOnDestroy() {

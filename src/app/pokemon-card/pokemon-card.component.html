@@ -1,7 +1,7 @@
 <div class="d-flex flex-column pokemon-container">
     <div class="d-flex justify-content-center pokemon-name">
         <div>
-            {{ pokemonDetails.name | titlecase }}
+            {{ pokemonDetails?.name | titlecase }}
         </div>
     </div>
     <img [src]="pokemonDetails.sprites.front_default"

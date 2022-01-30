@@ -1,6 +1,12 @@
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center"
+    *ngIf="pokemonId1 && pokemonId2" >
     <pokemon-card [pokemonId]="pokemonId1"
         (totalStat)="getPokemon1TotalStat($event)"></pokemon-card>
     <pokemon-card [pokemonId]="pokemonId2"
         (totalStat)="getPokemon2TotalStat($event)"></pokemon-card>
+    <div *ngIf="pokemon1TotalStats && pokemon2TotalStats" >
+        {{ pokemon1TotalStats }}
+        {{ pokemon2TotalStats }}
+    </div>
+    
 </div>

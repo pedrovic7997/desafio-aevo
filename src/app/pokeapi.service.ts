@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { map, catchError, switchMap } from 'rxjs/operators';
+import { interval, Observable, of, Subject } from 'rxjs';
 
 import { PokeapiListResponse } from './pokeapi-list-response';
 import { PokeapiListItem } from './pokeapi-list-item';
@@ -17,7 +17,6 @@ export class PokeapiService {
   private readonly pokemonItemSrc: string = 'https://pokeapi.co/api/v2/pokemon/';
 
   pokemonAdded = new EventEmitter<number>();
-  compare = new EventEmitter<Comparison>();
   
   private requestListUrl: string = '';
   private requestPokemonUrl: string = '';
@@ -112,11 +111,7 @@ export class PokeapiService {
   addPokemon(pokemonId: number): void {
     this.pokemonAdded.emit(pokemonId);
   }
-
-  comparePokemons(comparison: Comparison): void {
-    this.compare.emit(comparison);
-  }
-
+  
   // Metodos utilitarios
 
   extractPokemonId(pokemonUrl: string): number {

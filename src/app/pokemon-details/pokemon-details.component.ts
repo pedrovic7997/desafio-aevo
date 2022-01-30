@@ -14,7 +14,6 @@ export class PokemonDetailsComponent implements OnInit {
   private subscription: Subscription;
   
   pokemonId: number;
-  pokemonDetails: PokeapiPokemon;
   addIconSrc: string = 'assets/images/icon-plus.png'
 
   constructor(

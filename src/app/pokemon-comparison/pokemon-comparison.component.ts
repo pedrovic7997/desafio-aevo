@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import { Comparison } from '../comparison';
 import { PokeapiService } from '../pokeapi.service';
 
 @Component({
@@ -20,19 +22,18 @@ export class PokemonComparisonComponent implements OnInit {
   pokemon2TotalStats: number;
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private pokeapiService: PokeapiService
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.pokeapiService.compare.subscribe(
-      res => {
-        this.pokemonId1 = res.id1;
-        this.pokemonId2 = res.id2;
+    this.subscription = this.route.queryParams.subscribe(
+      queryParams => {
+        this.pokemonId1 = queryParams['id1'];
+        this.pokemonId2 = queryParams['id2'];
       }
     );
-    console.log(this.pokemon1TotalStats);
-    console.log(this.pokemon2TotalStats);
   }
 
   getPokemon1TotalStat(totalStat: number): void {

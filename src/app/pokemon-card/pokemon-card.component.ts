@@ -50,8 +50,8 @@ export class PokemonCardComponent implements OnInit {
           this.pokemonDetails.stats.forEach(
             (value) => this.statsTotal += value.base_stat
           );
+          this.totalStat.emit(this.statsTotal);
         }
       );
-    this.totalStat.emit(this.statsTotal);
   }
 }
