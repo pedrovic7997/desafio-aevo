@@ -15,7 +15,6 @@ export class PokemonDetailsComponent implements OnInit {
   
   pokemonId: number;
   pokemonDetails: PokeapiPokemon;
-  statsTotal: number = 0;
   addIconSrc: string = 'assets/images/icon-plus.png'
 
   constructor(
@@ -29,15 +28,6 @@ export class PokemonDetailsComponent implements OnInit {
         this.pokemonId = params['id'];
       }
     );
-    this.pokeapiService.getPokemonDetails(this.pokemonId)
-      .subscribe(
-        res => {
-          this.pokemonDetails = res;
-          this.pokemonDetails.stats.forEach(
-            (value) => this.statsTotal += value.base_stat
-          );
-        }
-      );
   }
   
   ngOnDestroy() {

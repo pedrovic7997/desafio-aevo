@@ -11,6 +11,7 @@ import { PokeapiService } from '../pokeapi.service';
 export class PokemonCardComponent implements OnInit {
 
   @Input() pokemonId: number;
+  
   pokemonDetails: PokeapiPokemon;
   statsTotal: number = 0;
 
