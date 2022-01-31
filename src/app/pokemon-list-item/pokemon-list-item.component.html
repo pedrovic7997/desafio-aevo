@@ -2,7 +2,7 @@
     <img [src]="imageUrl">
     <button class="list-item-pokemon-button"
         (click)="onPokemonClick()">
-        {{ pokemonItem.name | titlecase }}
+        {{ pokemonItem.name | titlecase | removeDash }}
     </button>
     <button (click)="onAddClick()" class="add-button"
         [title]="addButtonTitle">
