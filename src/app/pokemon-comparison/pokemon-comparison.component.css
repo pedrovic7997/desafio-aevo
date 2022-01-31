@@ -10,7 +10,7 @@
     margin-right: 10px;
 }
 
-.winner-container {
+.comparison-result-container {
     margin-bottom: 5px;
 }
 
@@ -27,6 +27,7 @@
     background-color: #FFFB93;
     border-radius: 18px;
     padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .comparison-container{
