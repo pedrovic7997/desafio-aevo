@@ -65,4 +65,8 @@ button > img{
         margin-top: 10px;
         margin-left: 0px;
     }
+
+    .image-container{
+        justify-content: center;
+    }
 } 
