@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 
-import { PokeapiListItem } from '../interfaces/pokeapi-list-item';
-import { PokeapiService } from '../services/pokeapi.service';
+import { PokeapiListItem } from '../../interfaces/pokeapi-list-item';
+import { PokeapiService } from '../../services/pokeapi.service';
 
 @Component({
   selector: 'app-pokemon-list',

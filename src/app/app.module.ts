@@ -6,14 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
-import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.component';
-import { PokemonComparisonComponent } from './pokemon-comparison/pokemon-comparison.component';
-import { ComparisonBoxComponent } from './comparison-box/comparison-box.component';
+import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
+import { PokemonDetailsComponent } from './components/pokemon-details/pokemon-details.component';
+import { PokemonComparisonComponent } from './components/pokemon-comparison/pokemon-comparison.component';
+import { ComparisonBoxComponent } from './components/comparison-box/comparison-box.component';
 import { PokeapiService } from './services/pokeapi.service';
-import { PokemonListItemComponent } from './pokemon-list-item/pokemon-list-item.component';
+import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon-list-item.component';
 import { RemoveDashPipe } from './pipes/remove-dash.pipe';
-import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
+import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
 
 @NgModule({
   declarations: [
