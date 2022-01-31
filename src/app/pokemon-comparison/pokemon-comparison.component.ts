@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-
-import { Comparison } from '../interfaces/comparison';
-import { PokeapiService } from '../services/pokeapi.service';
 
 @Component({
   selector: 'app-pokemon-comparison',
@@ -25,6 +22,11 @@ export class PokemonComparisonComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
+  /* Ao inicializar, faz uma inscrição no Observable responsável
+  *  por ficar de olho nos query parameters que vêm na rota
+  *  que são os ids dos pokemons a serem comparados,
+  *  e os captura.
+  */
   ngOnInit(): void {
     this.subscription = this.route.queryParams.subscribe(
       queryParams => {

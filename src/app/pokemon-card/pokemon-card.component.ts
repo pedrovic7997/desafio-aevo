@@ -10,13 +10,24 @@ import { PokeapiService } from '../services/pokeapi.service';
 })
 export class PokemonCardComponent implements OnInit {
 
+  // Input property para o id do pokemon a ser mostrado.
   @Input() pokemonId: number;
   
+  /* Output property para o componente responsável pela
+  *  comparação saber o total de stats desse pokemon.
+  */
   @Output() totalStat = new EventEmitter<number>();
 
+  /* Objeto contendo as informações necessárias de um pokemon,
+  *  consultadas da API.
+  */
   pokemonDetails: PokeapiPokemon;
+  
   statsTotal: number = 0;
 
+  /* Mapa contendo o esquema de cores a ser usado na hora de
+  *  imprimir os tipos do pokemon.
+  */
   readonly typeColorMap: any = {
     "normal":   {background: "#C0BFA4", fontColor: "#000000"},
     "fire":     {background: "#FF6E30", fontColor: "#FFFFFF"},
@@ -42,6 +53,11 @@ export class PokemonCardComponent implements OnInit {
     private pokeapiService: PokeapiService
   ) { }
 
+  /* Ao inicializar, faz uma inscrição no Observable que
+  *  vai retornar os detalhes do pokemon, para cada elemento
+  *  do array de stats, soma no total do pokemon atual e emite
+  *  o evento contendo o total calculado
+  */
   ngOnInit(): void {
     this.pokeapiService.getPokemonDetails(this.pokemonId)
       .subscribe(

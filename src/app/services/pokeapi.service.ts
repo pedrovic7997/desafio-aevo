@@ -28,6 +28,10 @@ export class PokeapiService {
 
   // Metodos para atender a listagem dos Pokemon
 
+  /* Faz a requisição pelo array de pokemons com o limite
+  *  já setado e guarda as urls para acessar a próxima lista
+  *  ou a anterior.
+  */
   getPokemonList(): Observable<Array<PokeapiListItem>>{
     return this.http.get<PokeapiListResponse>(this.requestListUrl)
       .pipe(map(
@@ -47,6 +51,12 @@ export class PokeapiService {
         ));
   }
 
+  /* Faz a verificação se o nome do pokemon consultado retorna
+  *  algo da consulta ou se retorna erro. Se retorna algo,
+  *  esse método constrói um elemento da lista e retorna
+  *  dentro de um array. Se retornar nada, esse método retorna
+  *  um array vazio.
+  */
   verifyPokemonSearch(pokemonSearch: string): Observable<Array<PokeapiListItem>> {
     this.requestPokemonUrl = this.pokemonItemSrc + pokemonSearch;
     let verifierPokemonListBuilder: PokeapiListItem[] = [];
@@ -68,6 +78,7 @@ export class PokeapiService {
     ;
   }
 
+  // Monta a url para acessar direto a imagem do pokemon
   getPokemonSpriteUrl(pokemonId: string): string{
     this.requestImageUrl = this.pokemonItemImgSrc +
       pokemonId + '.png';
@@ -80,6 +91,9 @@ export class PokeapiService {
       `?limit=${this.listLimit}`;
   }
 
+  /* Se houver algum endereço para a próxima lista, atualiza
+  *  a lista.
+  */
   getNextRequest(): boolean {
     if(this.currentNext !== ''){
       this.requestListUrl = this.currentNext;
@@ -89,6 +103,9 @@ export class PokeapiService {
     }
   }
 
+  /* Se houver algum endereço para a pŕoxima lista, atualiza
+  *  a lista.
+  */
   getPreviousRequest(): boolean {
     if(this.currentPrevious !== ''){
       this.requestListUrl = this.currentPrevious;

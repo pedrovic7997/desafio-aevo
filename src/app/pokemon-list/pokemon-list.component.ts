@@ -16,8 +16,10 @@ export class PokemonListComponent implements OnInit {
   readonly previousArrowSrc: string = 'assets/images/icons-prev.png';
   readonly nextArrowSrc: string = 'assets/images/icons-next.png';
 
-  pokemonSearch: string = '';
+  // Objeto contendo a lista de pokemons
   pokemonArray: PokeapiListItem[];
+
+  pokemonSearch: string = '';
   returnToList: boolean = false;
   noMatch: boolean = false;
   
@@ -26,13 +28,20 @@ export class PokemonListComponent implements OnInit {
 
   constructor(private pokeapiService: PokeapiService) { }
 
-  ngOnInit(): void {    
+  /* Ao inicializar, seta o valor limite inicial da lista
+  *  e faz a inscrição no Observable para receber o 
+  *  array de pokemons a serem mostrados
+  */
+  ngOnInit(): void {
     this.pokeapiService.setListLimit(this.listLimit);
     this.pokeapiService.getPokemonList().subscribe(
       res => this.pokemonArray = res
     );
   }
 
+  /* No clicar do botão 'anterior', a nova listagem com os pokemons
+  *  anteriores é carregada.
+  */
   onPreviousClick(): void {
     let hasUrl: boolean = this.pokeapiService.getPreviousRequest();
     if(hasUrl){
@@ -42,6 +51,9 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
+  /* No clicar do botão 'próximo', a nova listagem com os pokemons
+  *  seguintes é carregada.
+  */
   onNextClick(): void {
     let hasUrl: boolean = this.pokeapiService.getNextRequest();
     if(hasUrl){
@@ -51,6 +63,9 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
+  /* No clicar do 'Buscar', o botão de retornar é ativado,
+  *  e a lista é atualizada com o que foi buscado.
+  */
   onSearchClick(pokemonSearch: string): void {
     this.returnToList = true
     this.pokemonSearch = pokemonSearch.toLowerCase();
@@ -67,6 +82,9 @@ export class PokemonListComponent implements OnInit {
       );
   }
 
+  /* Remove o 'Retornar' e recupera a listagem completa
+  *  original
+  */
   onReturnClick(): void {
     this.returnToList = false;
     if(this.noMatch === true) this.noMatch = false;
@@ -76,6 +94,7 @@ export class PokemonListComponent implements OnInit {
     );
   }
 
+  // Depois de alterado o limite, no blur atualiza a lista
   onBlurLimit(): void {
     this.pokeapiService.setListLimit(this.listLimit);
     this.pokeapiService.getPokemonList().subscribe(

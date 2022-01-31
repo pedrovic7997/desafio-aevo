@@ -23,6 +23,7 @@ export class ComparisonBoxComponent implements OnInit {
   clearButtonSrc: string = 'assets/images/icon-close.png';
   versusSrc: string = 'assets/images/versus-icon.png';
 
+  // Objeto contendo os ids dos pokemons a serem comparados
   comparison: Comparison = {id1: -1, id2: -1};
 
   isPokemon1Set: boolean = false;
@@ -33,6 +34,11 @@ export class ComparisonBoxComponent implements OnInit {
     private pokeapiService: PokeapiService
   ) { }
 
+  /* Ao inicializar, se inscreve na emissão de evento de adição
+  *  de um pokemon e seta em alguma posição que ainda
+  *  não setada, resgatando a url com a imagem do pokemon.
+  *  Se nenhuma faltar ser setada, faz nada.
+  */
   ngOnInit(): void {
     this.subscription = this.pokeapiService.pokemonAdded.subscribe(
       res => {
@@ -64,6 +70,9 @@ export class ComparisonBoxComponent implements OnInit {
     this.pokemonBox2Src = this.emptyPokemonBoxSrc;
   }
 
+  // Faz uma navegação para o componente responsável pela 
+  // lógica da comparação, passando o objeto com os ids
+  // dos pokemons
   compare(): void {
     this.router.navigate(['/compare'],
       { queryParams: this.comparison });

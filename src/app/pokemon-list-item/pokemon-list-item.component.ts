@@ -11,6 +11,9 @@ import { PokeapiService } from '../services/pokeapi.service';
 })
 export class PokemonListItemComponent implements OnInit {
 
+  /* Input property para esse componente receber um elemento
+  *  do array com a listagem vinda da API
+  */
   @Input() pokemonItem: PokeapiListItem;
   
   pokemonId: number;
@@ -23,6 +26,10 @@ export class PokemonListItemComponent implements OnInit {
     private router: Router
   ) { }
 
+  /* Ao inicializar, extrai o id do pokemon que vem na
+  *  url e recupera a url direta para acessar a imagem
+  *  do pokemon.
+  */
   ngOnInit(): void {
     this.pokemonId = this.pokeapiService
       .extractPokemonId(this.pokemonItem.url);

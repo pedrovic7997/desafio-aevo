@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { PokeapiPokemon } from '../interfaces/pokeapi-pokemon';
 import { PokeapiService } from '../services/pokeapi.service';
 
 @Component({
@@ -21,6 +20,10 @@ export class PokemonDetailsComponent implements OnInit {
     private pokeapiService: PokeapiService
   ) { }
 
+  /* Ao inicializar, faz uma inscrição no Observable responsável
+  *  por ficar de olho nos path parameters que vêm na rota
+  *  que é o id do pokemon a serem mostrado, e o captura.
+  */
   ngOnInit(): void {
     this.subscription = this.route.params.subscribe(
       (params: any) => {
