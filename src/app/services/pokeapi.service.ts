@@ -15,6 +15,7 @@ export class PokeapiService {
   private readonly pokemonItemImgSrc: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
   private readonly pokemonItemSrc: string = 'https://pokeapi.co/api/v2/pokemon/';
 
+  // Emissor para acionar o componente Comparison-Box
   pokemonAdded = new EventEmitter<number>();
   
   private requestListUrl: string = '';
@@ -71,7 +72,7 @@ export class PokeapiService {
         return verifierPokemonListBuilder;
       } ))
       .pipe(catchError(
-        err => {
+        () => {
           return of(Array<PokeapiListItem>());
         }
       ))
