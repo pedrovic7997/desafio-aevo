@@ -9,23 +9,23 @@
     <div class="d-flex justify-content-center align-items-center">
         <div class="d-flex flex-column justify-content-center align-items-center"
             [ngClass]="{
-                'pokemon-draw': pokemonId1 === pokemonId2
+                'pokemon-draw': pokemon1TotalStats === pokemon2TotalStats
             }" >
             <div *ngIf="pokemonId1 === pokemonId2" class="comparison-result-container" >Empate</div>
             <div class="d-flex justify-content-center align-items-center">
                 <div class="d-flex justify-content-center align-items-center card-container flex-column"
                     [ngClass]="{
-                        'pokemon-winner': pokemonId1 > pokemonId2
+                        'pokemon-winner': pokemon1TotalStats > pokemon2TotalStats
                     }" >
-                    <div *ngIf="pokemonId1 > pokemonId2" class="comparison-resul-container" >Vencedor</div>
+                    <div *ngIf="pokemon1TotalStats > pokemon2TotalStats" class="comparison-result-container" >Vencedor</div>
                     <pokemon-card [pokemonId]="pokemonId1"
                     (totalStat)="getPokemon1TotalStat($event)"></pokemon-card>
                 </div>
                 <div class="d-flex justify-content-center align-items-center card-container flex-column"
                 [ngClass]="{
-                        'pokemon-winner': pokemonId2 > pokemonId1
+                        'pokemon-winner': pokemon2TotalStats > pokemon1TotalStats
                     }" >
-                    <div *ngIf="pokemonId2 > pokemonId1" class="comparison-resul-container" >Vencedor</div>
+                    <div *ngIf="pokemon2TotalStats > pokemon1TotalStats" class="comparison-result-container" >Vencedor</div>
                     <pokemon-card [pokemonId]="pokemonId2"
                     (totalStat)="getPokemon2TotalStat($event)"></pokemon-card>    
                 </div>
