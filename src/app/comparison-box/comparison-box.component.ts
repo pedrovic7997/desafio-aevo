@@ -69,7 +69,7 @@ export class ComparisonBoxComponent implements OnInit {
       { queryParams: this.comparison });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 }

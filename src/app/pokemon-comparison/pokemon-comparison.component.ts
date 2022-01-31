@@ -22,9 +22,7 @@ export class PokemonComparisonComponent implements OnInit {
   pokemon2TotalStats: number;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private pokeapiService: PokeapiService
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +42,7 @@ export class PokemonComparisonComponent implements OnInit {
     this.pokemon2TotalStats = totalStat;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 

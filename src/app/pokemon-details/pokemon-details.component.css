@@ -3,5 +3,12 @@
 }
 
 .details-buttons-container {
-    margin-bottom: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: fit-content;
+    background-color: #eeeeee;
+}
+
+.pokemon-container{
+    padding-bottom: 10px;
 }

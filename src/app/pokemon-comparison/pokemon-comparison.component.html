@@ -1,12 +1,35 @@
-<div class="d-flex justify-content-center"
-    *ngIf="pokemonId1 && pokemonId2" >
-    <pokemon-card [pokemonId]="pokemonId1"
-        (totalStat)="getPokemon1TotalStat($event)"></pokemon-card>
-    <pokemon-card [pokemonId]="pokemonId2"
-        (totalStat)="getPokemon2TotalStat($event)"></pokemon-card>
-    <div *ngIf="pokemon1TotalStats && pokemon2TotalStats" >
-        {{ pokemon1TotalStats }}
-        {{ pokemon2TotalStats }}
+<div class="d-flex justify-content-center align-items-center flex-column container comparison-container">
+    <div class="d-flex justify-content-center align-items-center return-container">
+        <a routerLink="/">
+            <button class="btn btn-outline-warning return-button">
+                Retornar a lista
+            </button>
+        </a>
     </div>
-    
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center"
+            [ngClass]="{
+                'pokemon-draw': pokemonId1 === pokemonId2
+            }" >
+            <div *ngIf="pokemonId1 === pokemonId2" >Empate</div>
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="d-flex justify-content-center align-items-center card-container flex-column"
+                    [ngClass]="{
+                        'pokemon-winner': pokemonId1 > pokemonId2
+                    }" >
+                    <div *ngIf="pokemonId1 > pokemonId2" class="winner-container" >Vencedor</div>
+                    <pokemon-card [pokemonId]="pokemonId1"
+                    (totalStat)="getPokemon1TotalStat($event)"></pokemon-card>
+                </div>
+                <div class="d-flex justify-content-center align-items-center card-container flex-column"
+                [ngClass]="{
+                        'pokemon-winner': pokemonId2 > pokemonId1
+                    }" >
+                    <div *ngIf="pokemonId2 > pokemonId1" class="winner-container" >Vencedor</div>
+                    <pokemon-card [pokemonId]="pokemonId2"
+                    (totalStat)="getPokemon2TotalStat($event)"></pokemon-card>    
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

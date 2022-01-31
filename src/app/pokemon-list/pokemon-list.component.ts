@@ -11,7 +11,7 @@ import { PokeapiService } from '../pokeapi.service';
 export class PokemonListComponent implements OnInit {
 
   // Valor inicial padrão
-  listLimit: number = 151;
+  listLimit: number = 20;
 
   readonly previousArrowSrc: string = 'assets/images/icons-prev.png';
   readonly nextArrowSrc: string = 'assets/images/icons-next.png';
