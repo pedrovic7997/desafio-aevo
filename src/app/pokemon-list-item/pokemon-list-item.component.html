@@ -4,7 +4,8 @@
         (click)="onPokemonClick()">
         {{ pokemonItem.name | titlecase }}
     </button>
-    <button (click)="onAddClick()" class="add-button">
+    <button (click)="onAddClick()" class="add-button"
+        [title]="addButtonTitle">
         <img [src]="addIconSrc">
     </button>
 </div>

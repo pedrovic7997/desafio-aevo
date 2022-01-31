@@ -16,6 +16,7 @@ export class PokemonListItemComponent implements OnInit {
   pokemonId: number;
   imageUrl: string;
   addIconSrc: string = 'assets/images/icon-plus.png';
+  addButtonTitle: string = 'Comparar Pokemon';
 
   constructor(
     private pokeapiService: PokeapiService,

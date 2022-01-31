@@ -46,7 +46,11 @@ button > img{
 @media only screen and (max-width: 1200px) {
     .pokemon-box {
         width: 80px;
-    }   
+    }
+    
+    .compare-button{
+        margin-right: 5px;
+    }
 }
 
 @media only screen and (max-width: 768px) {

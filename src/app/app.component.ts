@@ -9,6 +9,6 @@ export class AppComponent {
   title = 'desafio-aevo';
   name: string = 'PokeAPI';
   logoSrc: string = 'assets/images/pokeapi-logo.png';
-  text: string = "Clique em um Pokemon ou selecione dois e clique em ‘Comparar’";
+  text: string = "Clique em um Pokemon ou adicione dois e clique em ‘Comparar’";
 
 }

@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, catchError, switchMap } from 'rxjs/operators';
-import { interval, Observable, of, Subject } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 import { PokeapiListResponse } from '../interfaces/pokeapi-list-response';
 import { PokeapiListItem } from '../interfaces/pokeapi-list-item';

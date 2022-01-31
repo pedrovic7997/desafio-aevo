@@ -20,6 +20,9 @@ export class PokemonListComponent implements OnInit {
   pokemonArray: PokeapiListItem[];
   returnToList: boolean = false;
   noMatch: boolean = false;
+  
+  previousButtonTitle: string = `Voltar para os ${this.listLimit} anteriores`;
+  nextButtonTitle: string = `Avançar para os ${this.listLimit} próximos`;
 
   constructor(private pokeapiService: PokeapiService) { }
 
