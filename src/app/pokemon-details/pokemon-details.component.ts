@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { PokeapiPokemon } from '../pokeapi-pokemon';
-import { PokeapiService } from '../pokeapi.service';
+import { PokeapiPokemon } from '../interfaces/pokeapi-pokemon';
+import { PokeapiService } from '../services/pokeapi.service';
 
 @Component({
   selector: 'app-pokemon-details',

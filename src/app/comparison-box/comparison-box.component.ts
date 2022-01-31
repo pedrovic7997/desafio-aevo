@@ -1,10 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { Comparison } from '../comparison';
-import { PokeapiService } from '../pokeapi.service';
+import { Comparison } from '../interfaces/comparison';
+import { PokeapiService } from '../services/pokeapi.service';
 
 @Component({
   selector: 'comparison-box',

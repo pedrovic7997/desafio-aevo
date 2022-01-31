@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { Comparison } from '../comparison';
-import { PokeapiService } from '../pokeapi.service';
+import { Comparison } from '../interfaces/comparison';
+import { PokeapiService } from '../services/pokeapi.service';
 
 @Component({
   selector: 'app-pokemon-comparison',

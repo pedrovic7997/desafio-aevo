@@ -3,10 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { map, catchError, switchMap } from 'rxjs/operators';
 import { interval, Observable, of, Subject } from 'rxjs';
 
-import { PokeapiListResponse } from './pokeapi-list-response';
-import { PokeapiListItem } from './pokeapi-list-item';
-import { PokeapiPokemon } from './pokeapi-pokemon';
-import { Comparison } from './comparison';
+import { PokeapiListResponse } from '../interfaces/pokeapi-list-response';
+import { PokeapiListItem } from '../interfaces/pokeapi-list-item';
+import { PokeapiPokemon } from '../interfaces/pokeapi-pokemon';
 
 @Injectable({
   providedIn: 'root'

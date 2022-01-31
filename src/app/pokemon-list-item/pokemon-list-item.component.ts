@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { PokeapiListItem } from '../pokeapi-list-item';
-import { PokeapiService } from '../pokeapi.service';
+import { PokeapiListItem } from '../interfaces/pokeapi-list-item';
+import { PokeapiService } from '../services/pokeapi.service';
 
 @Component({
   selector: 'pokemon-list-item',

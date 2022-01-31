@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { PokeapiPokemon } from '../pokeapi-pokemon';
-import { PokeapiService } from '../pokeapi.service';
+import { PokeapiPokemon } from '../interfaces/pokeapi-pokemon';
+import { PokeapiService } from '../services/pokeapi.service';
 
 @Component({
   selector: 'pokemon-card',
