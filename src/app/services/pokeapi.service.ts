@@ -24,6 +24,7 @@ export class PokeapiService {
   private requestImageUrl: string;
   private currentNext: string = '';
   private currentPrevious: string = '';
+  private count: number;
 
   constructor(private http: HttpClient) { }
 
@@ -37,6 +38,7 @@ export class PokeapiService {
     return this.http.get<PokeapiListResponse>(this.requestListUrl)
       .pipe(map(
         res => {
+          this.count = res?.count;
           if(typeof res?.next !== null){
             this.currentNext = res?.next;            
           } else {
@@ -87,7 +89,11 @@ export class PokeapiService {
   }
   
   setListLimit(listLimit: number): void{
-    this.listLimit = listLimit;
+    if(listLimit <= this.count){
+      this.listLimit = listLimit;
+    } else {
+      this.listLimit = this.count;
+    }
     this.requestListUrl = this.pokemonItemSrc +
       `?limit=${this.listLimit}`;
   }
