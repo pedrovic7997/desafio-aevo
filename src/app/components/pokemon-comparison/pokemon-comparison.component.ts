@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './pokemon-comparison.component.html',
   styleUrls: ['./pokemon-comparison.component.css']
 })
-export class PokemonComparisonComponent implements OnInit {
+export class PokemonComparisonComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 

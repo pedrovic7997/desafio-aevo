@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -10,7 +10,7 @@ import { PokeapiService } from '../../services/pokeapi.service';
   templateUrl: './pokemon-details.component.html',
   styleUrls: ['./pokemon-details.component.css']
 })
-export class PokemonDetailsComponent implements OnInit {
+export class PokemonDetailsComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
   

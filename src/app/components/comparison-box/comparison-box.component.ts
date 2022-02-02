@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { PokeapiService } from '../../services/pokeapi.service';
   templateUrl: './comparison-box.component.html',
   styleUrls: ['./comparison-box.component.css']
 })
-export class ComparisonBoxComponent implements OnInit {
+export class ComparisonBoxComponent implements OnInit, OnDestroy {
   
   private subscription: Subscription;
   
