@@ -67,7 +67,8 @@ export class PokemonListComponent implements OnInit {
   *  e a lista é atualizada com o que foi buscado.
   */
   onSearchClick(pokemonSearch: string): void {
-    this.returnToList = true
+    this.returnToList = true;
+    this.noMatch = false;
     this.pokemonSearch = pokemonSearch.toLowerCase();
     this.pokeapiService
       .verifyPokemonSearch(this.pokemonSearch)
