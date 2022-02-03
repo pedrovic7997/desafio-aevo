@@ -23,8 +23,6 @@ Aplicação Web feito com Angular para consumo da [PokeAPI](https://pokeapi.co/d
 
 Projeto desenvolvido para o desafio de estágio em Desenvolvimento na [AEVO](https://aevo.com.br/).
 
----
-
 ## ⚙️ Funcionalidades
 
 Para consumo da listagem da API, uma listagem foi montada para representar toda a lista inicial de consulta dos Pokemons.
@@ -49,19 +47,17 @@ Ao clicar em "Comparar", aparecerá uma tela dizendo qual Pokemon tem a maior so
 
 - Inclusão para comparar:
 
-![Inclusão](https://github.com/pedrovic7997/desafio-aevo/blob/master/media_doc/Inclus%C3%A3o%20Comparar.gif "Inclusão")
+![Inclusão](https://github.com/pedrovic7997/desafio-aevo/blob/master/media_doc/Inclusao_Comparar.gif "Inclusão")
 
 - Comparação:
 
-![Comparação](https://github.com/pedrovic7997/desafio-aevo/blob/master/media_doc/Compara%C3%A7%C3%B5es.gif "Comparação")
+![Comparação](https://github.com/pedrovic7997/desafio-aevo/blob/master/media_doc/Comparacoes.gif "Comparação")
 
 ## Extra
 
 - Responsividade:
 
 ![Responsividade](https://github.com/pedrovic7997/desafio-aevo/blob/master/media_doc/Responsividade.gif "Responsividade")
-
----
 
 ## 🎨 Prototipagem
 
@@ -72,8 +68,6 @@ Lista:
 
 Pokemon Card:
 ![Pokemon Figma](https://github.com/pedrovic7997/desafio-aevo/blob/master/media_doc/Prototipo_figma_pokemon.png "Pokemon Figma")
-
----
 
 ## 🛠 Tecnologias
 
@@ -86,8 +80,6 @@ Pokemon Card:
   - Protótipo: [Figma](https://www.figma.com/file/VZ6sQKQ4hAlBiTld6ufDWT/Pokedex?node-id=0%3A1)
   - API: [PokeAPI](https://pokeapi.co/docs/v2)
   - Editor: [Visual Studio Code](https://code.visualstudio.com/)
-
----
 
 ## 🚀 Como executar o projeto localmente
 
@@ -119,13 +111,9 @@ $ ng serve
 # A aplicação será aberta na porta:4200 - acesse http://localhost:3000 no navegador de internet
 ```
 
----
-
 ## 🚀 Executar o projeto deployed
 
 Basta acessar esse [link](https://pedrovic7997.github.io/desafio-aevo/) para ter acesso a aplicação já rodando a build de produção pronta.
-
----
 
 ## 💡 Pontos para melhoria
 
@@ -134,15 +122,11 @@ Basta acessar esse [link](https://pedrovic7997.github.io/desafio-aevo/) para ter
 
 Para sugestões de melhorias, entre em contato ou acesse a Issue do repositório.
 
----
-
 ## 🦸 Autor
 
 Pedro Victor Santos  
 [GitHub](https://github.com/pedrovic7997)
 [Email](mailto:pedrovictor6974@gmail.com)
-
----
 
 ## 📝 Licença
 
