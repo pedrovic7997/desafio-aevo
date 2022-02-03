@@ -63,10 +63,10 @@ Ao clicar em "Comparar", aparecerá uma tela dizendo qual Pokemon tem a maior so
 
 Protótipo feito no [Figma](https://www.figma.com/file/VZ6sQKQ4hAlBiTld6ufDWT/Pokedex?node-id=0%3A1)
 
-Lista:
+- Lista:
 ![Lista Figma](https://github.com/pedrovic7997/desafio-aevo/blob/master/media_doc/Prototipo_figma_lista.png "Lista Figma")
 
-Pokemon Card:
+- Pokemon Card:
 ![Pokemon Figma](https://github.com/pedrovic7997/desafio-aevo/blob/master/media_doc/Prototipo_figma_pokemon.png "Pokemon Figma")
 
 ## 🛠 Tecnologias
