@@ -6,11 +6,12 @@ Tabela de conteúdos
    * [Sobre o projeto](#-sobre-o-projeto)
    * [Funcionalidades](#-funcionalidades)
    * [Protótipo](#-prototipagem)
+   * [Tecnologias](#-tecnologias)
    * [Como executar o projeto localmente](#-como-executar-o-projeto-localmente)
      * [Pré-requisitos](#pré-requisitos)
      * [Rodando a aplicação](#-rodando-a-aplicação)
    * [Executar o projeto deployed](#-executar-o-projeto-deployed)
-   * [Tecnologias](#-tecnologias)
+   * [Pontos para melhoria](#-pontos-para-melhoria)
    * [Autor](#-autor)
    * [Licença](#user-content--licença)
 <!--te-->
