@@ -69,7 +69,7 @@ export class PokemonListComponent implements OnInit {
   onSearchClick(pokemonSearch: string): void {
     this.returnToList = true;
     this.noMatch = false;
-    this.pokemonSearch = pokemonSearch.toLowerCase();
+    this.pokemonSearch = pokemonSearch.toLowerCase().replace(/ /gi, "-");
     this.pokeapiService
       .verifyPokemonSearch(this.pokemonSearch)
       .subscribe(
