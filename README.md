@@ -5,6 +5,7 @@ Tabela de conteúdos
 <!--ts-->
    * [Sobre o projeto](#-sobre-o-projeto)
    * [Funcionalidades](#-funcionalidades)
+     * [Exemplos de uso](#-exemplos-de-uso)
    * [Protótipo](#-prototipagem)
    * [Tecnologias](#-tecnologias)
    * [Como executar o projeto localmente](#-como-executar-o-projeto-localmente)
