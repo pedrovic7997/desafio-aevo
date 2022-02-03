@@ -125,6 +125,15 @@ Basta acessar esse [link](https://pedrovic7997.github.io/desafio-aevo/) para ter
 
 ---
 
+## 💡 Pontos para melhoria
+
+- Para uma melhor escalabilidade, montar uma divisão de módulos do sistema, visto que o módulo raiz está começando a ficar muito cheio de declarações
+- Para uma melhor usabilidade, fazer uso de query parameter para acessar o limite por página da lista e o offset para cada página afim de recuperar facilmente o estado da lista antes de buscar por um Pokemon, acessar os detalhes de um ou acessar uma comparação e assim voltar com a lista do jeito que o usuário a deixou.
+
+Para sugestões de melhorias, entre em contato ou acesse a Issue do repositório.
+
+---
+
 ## 🦸 Autor
 
 Pedro Victor Santos  
