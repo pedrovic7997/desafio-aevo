@@ -4,10 +4,10 @@
             {{ pokemonDetails?.name | titlecase }}
         </div>
     </div>
-    <img [src]="pokemonDetails.sprites.front_default"
+    <img [src]="pokemonDetails?.sprites?.front_default"
     class="pokemon-image">
     <div class="d-flex justify-content-center">
-        <p *ngFor="let type of pokemonDetails.types"
+        <p *ngFor="let type of pokemonDetails?.types"
             class="pokemon-type"
             [ngStyle]="{
                 'backgroundColor': typeColorMap[type.type.name].background, 
@@ -17,7 +17,7 @@
         </p>
     </div>
     <div class="pokemon-stats">
-        <div *ngFor="let stat of pokemonDetails.stats"
+        <div *ngFor="let stat of pokemonDetails?.stats"
             class="d-flex justify-content-between">
             <div>
                 {{ stat.stat.name | titlecase | removeDash }}
