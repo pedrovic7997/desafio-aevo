@@ -108,7 +108,7 @@ $ npm install
 # Inicialize o servidor de aplicação
 $ ng serve
 
-# A aplicação será aberta na porta:4200 - acesse http://localhost:3000 no navegador de internet
+# A aplicação será aberta na porta:4200 - acesse http://localhost:4200 no navegador de internet
 ```
 
 ## 🚀 Executar o projeto deployed
